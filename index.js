@@ -18,18 +18,18 @@ class Player {
         }
         this.width = 66
         this.height = 150
-        this.image = createImage('/images/spriteStandRight.png')
+        this.image = createImage('./images/spriteStandRight.png')
         this.frames = 0
         this.sprites = {
             stand: {
-                right: createImage('/images/spriteStandRight.png'),
-                left: createImage('/images/spriteStandLeft.png'),
+                right: createImage('./images/spriteStandRight.png'),
+                left: createImage('./images/spriteStandLeft.png'),
                 cropWidth: 177,
                 width: 66
             },
             run: {
-                right: createImage('/images/spriteRunRight.png'),
-                left: createImage('/images/spriteRunLeft.png'),
+                right: createImage('./images/spriteRunRight.png'),
+                left: createImage('./images/spriteRunLeft.png'),
                 cropWidth: 341,
                 width: 127.875
             }
