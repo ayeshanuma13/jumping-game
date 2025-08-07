@@ -2,11 +2,32 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>title</title>
+    <title>Space jumper</title>
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <canvas></canvas>
+    <div id="startScreen" class="overlay">
+        <div class="overlay-content">
+            <h1>Press Space to Start</h1>
+        </div>
+    </div>
+
+    <div id="winScreen" class="overlay" style="display: none;">
+        <div class="overlay-content">
+            <h1>You Win!</h1>
+            <p id="finalWinScore"></p>
+            <button onclick="init()">Play Again</button>
+        </div>
+    </div>
+
+    <div id="loseScreen" class="overlay" style="display: none;">
+        <div class="overlay-content">
+            <h1>Game Over</h1>
+            <p id="finalLoseScore"></p>
+            <button onclick="init()">Play Again</button>
+        </div>
+    </div>
 </body>
 </html>
