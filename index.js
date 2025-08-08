@@ -315,7 +315,6 @@ function animate(){
         }
     }
 
-    //console.log(scrollOffset)
 
     //platform collision detection
     platforms.forEach(platform => {
