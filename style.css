@@ -19,7 +19,6 @@ canvas {
   z-index: 0;
 }
 
-/* Overlay Base Style */
 .overlay {
   position: absolute;
   top: 0;
@@ -38,12 +37,10 @@ canvas {
   color: #97BCFF;
 }
 
-/* Custom overlay for Win/Lose with dark bg */
 #winScreen, #loseScreen {
   background: rgba(0, 0, 0, 0.85);
 }
 
-/* Content Container */
 .overlay-content {
   max-width: 800px;
   width: 90%;
@@ -53,20 +50,18 @@ canvas {
   box-shadow: 0 0 20px #3674B3;
 }
 
-/* Logo Styling */
 .overlay-content img:first-of-type {
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
 }
 
-/* Game Title or Logo */
 .overlay-content img:nth-of-type(2) {
   width: 300px;
   margin-bottom: 20px;
 }
 
-/* Mission briefing text */
+
 .overlay-content p {
   color: #97BCFF;
   font-size: 12px;
@@ -74,7 +69,7 @@ canvas {
   margin-bottom: 20px;
 }
 
-/* Main heading */
+
 .overlay-content h1 {
   font-size: 20px;
   color: #3674B3;
@@ -82,7 +77,6 @@ canvas {
   animation: pulse 1.5s infinite alternate;
 }
 
-/* Start Screen Specific Tweaks */
 #startScreen {
   position: absolute;
   top: 50%;
@@ -136,7 +130,6 @@ canvas {
 }
 
 
-/* Final score on win/lose */
 #finalWinScore,
 #finalLoseScore {
   color: #919EAA;
@@ -144,7 +137,6 @@ canvas {
   margin: 20px 0;
 }
 
-/* Buttons */
 .overlay-content button {
   background-color: #3674B3;
   color: white;
@@ -161,7 +153,6 @@ canvas {
   background-color: #124552;
 }
 
-/* Glowing pulse animation */
 @keyframes pulse {
   0% { opacity: 0.6; transform: scale(1); }
   100% { opacity: 1; transform: scale(1.05); }
