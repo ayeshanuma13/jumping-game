@@ -5,26 +5,48 @@
     <title>Space jumper</title>
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <canvas></canvas>
+
     <div id="startScreen" class="overlay">
-        <div class="overlay-content">
-            <h1>Press Space to Start</h1>
+        <div class="overlay-content start">
+            <img src="./images/logo.png" alt="Game Logo" class="logo" />
+            <div class="briefing">
+                <h2>🚨 MISSION BRIEFING 🚨</h2>
+                <p>
+                    Commander, your spaceship has crash-landed on an unknown alien planet after a sudden asteroid strike.
+                    <br><br>
+                    Hostile alien forces are closing in.
+                    You must navigate this dangerous terrain, eliminate enemy threats by jumping on them, and locate your damaged ship.
+                    <br><br>
+                    Use keys to navigate: A - left, D - right, W - jump
+                    <br><br>
+                    Suit up. Stay sharp. And don’t let them win.
+                </p>
+                <h3 class="start-text">Press Space to Start</h3>
+            </div>
         </div>
     </div>
 
     <div id="winScreen" class="overlay" style="display: none;">
-        <div class="overlay-content">
-            <h1>You Win!</h1>
+        <div class="overlay-content win">
+            <h1>You Win!</h1><br><br>
+            <p>You fought through alien forces, defied gravity,
+                and made it back to your spaceship in one piece.
+                The galaxy owes you one, Commander.</p>
             <p id="finalWinScore"></p>
             <button onclick="init()">Play Again</button>
         </div>
     </div>
 
     <div id="loseScreen" class="overlay" style="display: none;">
-        <div class="overlay-content">
-            <h1>Game Over</h1>
+        <div class="overlay-content lose">
+            <h1>Game Over</h1><br><br>
+            <p>Your mission has failed.
+                The alien forces were too strong this time.
+                But a true space jumper never gives up.</p>
             <p id="finalLoseScore"></p>
             <button onclick="init()">Play Again</button>
         </div>

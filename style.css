@@ -1,37 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    margin: 0;
-    display:flex;
-    background-color:black;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: 'Press Start 2P', cursive;
+  color: #97BCFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
+canvas {
+  display: block;
+  z-index: 0;
+}
+
+/* Overlay Base Style */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: url('./images/start-screen.png') center center / cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   z-index: 10;
-}
-
-.overlay-content {
+  padding: 40px;
+  box-sizing: border-box;
   text-align: center;
-  color: white;
+  color: #97BCFF;
 }
 
-.overlay-content h1 {
-  font-size: 48px;
+/* Custom overlay for Win/Lose with dark bg */
+#winScreen, #loseScreen {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Content Container */
+.overlay-content {
+  max-width: 800px;
+  width: 90%;
+  background: rgba(18, 69, 82, 0.7);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #3674B3;
+}
+
+/* Logo Styling */
+.overlay-content img:first-of-type {
+  max-width: 100%;
+  height: auto;
   margin-bottom: 20px;
 }
 
-.overlay-content button {
-  padding: 10px 20px;
+/* Game Title or Logo */
+.overlay-content img:nth-of-type(2) {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+/* Mission briefing text */
+.overlay-content p {
+  color: #97BCFF;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Main heading */
+.overlay-content h1 {
   font-size: 20px;
+  color: #3674B3;
+  margin-top: 10px;
+  animation: pulse 1.5s infinite alternate;
+}
+
+/* Start Screen Specific Tweaks */
+#startScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1024px;
+  height: 576px;
+  background: url('./images/start-screen.png') center center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+#startScreen .overlay-content.start {
+  max-width: 600px;
+  width: 90%;
+  padding: 20px;
+  background: rgba(18, 69, 82, 0.6);
+  border-radius: 14px;
+  box-shadow: 0 0 15px #3674B3;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+#startScreen .logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+#startScreen .briefing h2 {
+  font-size: 12px;
+  color: #97BCFF;
+  margin-bottom: 12px;
+}
+
+#startScreen .briefing p {
+  font-size: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: left;
+  background: rgba(18, 69, 82, 0.3);
+  color: #97BCFF;
+}
+
+#startScreen .start-text {
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+
+/* Final score on win/lose */
+#finalWinScore,
+#finalLoseScore {
+  color: #919EAA;
+  font-size: 12px;
+  margin: 20px 0;
+}
+
+/* Buttons */
+.overlay-content button {
+  background-color: #3674B3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
   cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.overlay-content button:hover {
+  background-color: #124552;
+}
+
+/* Glowing pulse animation */
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
 }
