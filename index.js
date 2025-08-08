@@ -1,11 +1,24 @@
 let gameStarted = false
 let gameWon = false
 let gameOver = false
+let enemySpawnInterval = null
+
+const bgMusic = new Audio('./audio/bg-music.mp3')
+bgMusic.loop = true
+bgMusic.volume = 0.3 
+
+const enemyHitSound = new Audio('./audio/enemy-hit.wav')
+const loseSound = new Audio('audio/lose-sound.mp3')
+const winSound = new Audio('audio/win-sound.wav')
+
 
 document.addEventListener('keydown', (event) => {
   if (!gameStarted && event.code === 'Space') {
     document.getElementById('startScreen').style.display = 'none'
     gameStarted = true
+    bgMusic.currentTime = 0
+    bgMusic.play().catch(e => console.log("Background music failed:", e));
+    enemySpawnInterval = setInterval(spawnEnemy, 4000)
   }
 })
 
@@ -166,6 +179,7 @@ let killScore = 0
 function init() {
     platformImg = createImage('./images/platform.png')
     player = new Player()
+    clearInterval(enemySpawnInterval)
     platforms = [
         new Platform({ x: 0, y: 470, image: platformImg }),
         new Platform({ x: platformImg.width - 2, y: 470, image: platformImg }),
@@ -232,6 +246,16 @@ function init() {
     document.getElementById('winScreen').style.display = 'none'
     document.getElementById('loseScreen').style.display = 'none'
 }
+
+
+function spawnEnemy() {
+    const spawnX = canvas.width + 100 
+    const spawnY = 370
+    const speed = 2 + Math.random() * 1.5
+
+    enemies.push(new Enemy({ x: spawnX, y: spawnY, speed }))
+}
+
 
 function animate(){
     requestAnimationFrame(animate)
@@ -352,6 +376,8 @@ function animate(){
             player.position.x + player.width >= enemy.position.x &&
             player.position.x <= enemy.position.x + enemy.width
         ) {
+            enemyHitSound.currentTime = 0
+            enemyHitSound.play()
             enemy.markedForDeletion = true
             player.velocity.y = -15 
             killScore += 100
@@ -367,6 +393,10 @@ function animate(){
         if (collision && !enemy.markedForDeletion) {
             gameOver = true
             gameStarted = false
+            bgMusic.pause()
+            bgMusic.currentTime = 0
+            loseSound.currentTime = 0
+            loseSound.play()
             document.getElementById('loseScreen').style.display = 'flex'
             document.getElementById('finalLoseScore').innerText = 'Score: ' + (scrollScore + killScore)
             return
@@ -379,6 +409,11 @@ function animate(){
     if (scrollOffset>14500) {
         gameWon = true
         gameStarted = false
+        bgMusic.pause()
+        bgMusic.currentTime = 0
+        winSound.currentTime = 0
+        winSound.play()
+        clearInterval(enemySpawnInterval)
         document.getElementById('winScreen').style.display = 'flex'
         document.getElementById('finalWinScore').innerText = 'Score: ' + (scrollScore + killScore)
         return
@@ -388,6 +423,11 @@ function animate(){
     if (player.position.y > canvas.height) {
         gameOver = true
         gameStarted = false
+        bgMusic.pause()
+        bgMusic.currentTime = 0
+        loseSound.currentTime = 0
+        loseSound.play()
+        clearInterval(enemySpawnInterval)
         document.getElementById('loseScreen').style.display = 'flex'
         document.getElementById('finalLoseScore').innerText = 'Score: ' + (scrollScore + killScore)
         return
